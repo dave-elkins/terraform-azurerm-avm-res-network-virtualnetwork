@@ -26,7 +26,8 @@ resource "azapi_resource" "subnet" {
       } : null
       serviceEndpoints = var.service_endpoints != null ? [
         for service_endpoint in var.service_endpoints : {
-          service = service_endpoint
+          service = service_endpoint.service
+          locations = service_endpoint.locations
         }
       ] : null
       serviceEndpointPolicies = var.service_endpoint_policies != null ? [
