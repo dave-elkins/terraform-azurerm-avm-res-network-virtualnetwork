@@ -160,7 +160,10 @@ variable "service_endpoint_policies" {
 }
 
 variable "service_endpoints" {
-  type        = set(string)
+  type        = set(object({
+    service = string
+    locations = list(string)
+  }))
   default     = null
   description = <<DESCRIPTION
 (Optional) A set of service endpoints to associate with the subnet. Changing this forces a new resource to be created.
