@@ -162,7 +162,7 @@ variable "service_endpoint_policies" {
 variable "service_endpoints" {
   type        = set(object({
     service = string
-    locations = list(string)
+    locations = optional(list(string), null)
   }))
   default     = null
   description = <<DESCRIPTION
